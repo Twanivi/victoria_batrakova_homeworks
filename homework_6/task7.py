@@ -6,7 +6,7 @@ distance_of_one_day = 1
 distance = 10
 day = 1
 add_distance = 1.1
-# stop_distance
+
 
 while distance_of_one_day <= distance:
     distance_of_one_day *= add_distance
