@@ -10,7 +10,7 @@ lines = [
 
 def lines_csv(lines):
     with open('table_task2.csv', 'w', newline='') as file:
-        writer = csv.writer(file, delimiter=';')
+        writer = csv.writer(file)
         writer.writerow(lines[0].keys())
         for i in lines:
             writer.writerow(i.values())
