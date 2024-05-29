@@ -13,93 +13,59 @@
 # Примечание:
 # - НЕЛЬЗЯ менять реализацию приведенных в исходных данных классов и проверочного кода.
 # - Нет ограничений по реализации классов CarMan и Vehicle, а также вспомогательной логики.
-from abc import ABC, abstractmethod
-class Car:
-    @abstractmethod
+
+class Vehicle:
     def __init__(self):
+        self.id = 1
+
+
+class CarMan(Vehicle):
+    def __init__(self):
+        super().__init__()
+        object_id_collector = self.id
+
+    def change_number(self):
+        if Car():
+            self.id += 1
+        elif CarCommander():
+            self.id += 1
+        elif CarGunner():
+            self.id += 1
+        else:
+            return self.id
+
+
+class Car(Vehicle):
+    def __init__(self):
+        super().__init__()
         object_id_collector = self.id
 
 
-class CarCommander:
-    @abstractmethod
+class CarCommander(Vehicle):
     def __init__(self):
-        self.id = 0
+        super().__init__()
         object_id_collector = self.id
 
 
-class CarGunner:
-    @abstractmethod
+class CarGunner(Vehicle):
     def __init__(self):
+        super().__init__()
         object_id_collector = self.id
+
+
+
 
 
 def check_object_id_collector():
     expected_ids = (1, 2, 3, 4, 5)
+    # CarMan().id
+    CarMan.change_number(CarMan().id)
     actual_ids = (CarGunner().id, CarGunner().id, Car().id, CarCommander().id, Car().id)
-    if actual_ids == expected_ids:
-        print('Test passed. Amazing job!')
-    else:
-        print(f'Expected_ids: {expected_ids}. Actual_ids: {actual_ids}.')
+    assert actual_ids == expected_ids, 'Expected_ids: {}. Actual_ids: {}.'.format(expected_ids, actual_ids)
+    print('Test passed. Amazing job!')
 
 
 check_object_id_collector()
 
-#
-# class Car:
-# id_counter = 0
-#
-# def __init__(self):
-# Car.id_counter += 1
-# self.id = Car.id_counter
-#
-#
-# class CarCommander:
-# id_counter = 0
-#
-# def __init__(self):
-# CarCommander.id_counter += 1
-# self.id = CarCommander.id_counter
-#
-#
-# class CarGunner:
-# id_counter = 0
-#
-# def __init__(self):
-# CarGunner.id_counter += 1
-# self.id = CarGunner.id_counter
-#
-#
-# def check_object_id_collector():
-# expected_ids = (1, 2, 3, 4, 5)
-# actual_ids = (CarGunner().id, CarGunner().id, Car().id, CarCommander().id, Car().id)
-#
-# if expected_ids == actual_ids:
-# print(">>> Well done. Amazing job!")
-# else:
-# print("IDs do not match.")
-#
-# check_object_id_collector()
 
-# class Car:
-# def __init__(self):
-# self.id = 1
-#
-# class CarCommander:
-# def __init__(self):
-# self.id = 2
-#
-# class CarGunner:
-# def __init__(self):
-# self.id = 3
-#
-# def check_object_id_collector():
-# expected_ids = (1, 2, 3, 4, 5)
-#
-# car = Car()
-# commander = CarCommander()
-# gunner = CarGunner()
-#
-# if car.id in expected_ids and commander.id in expected_ids and gunner.id in expected_ids:
-# print("Well done. Amazing job!")
-# else:
-# print("IDs do not match the expected values.")
+
